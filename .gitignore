@@ -92,3 +92,4 @@ sw.*
 
 # truffle build output
 build/
+address.json
