@@ -3,7 +3,7 @@
     <div class="text-center my-6">
       <h2 class="text-3xl font-semibold text-gray-900">Register</h2>
     </div>
-    <registration-form :regFee="regFee" @register="handleRegister" />
+    <registration-form :regFee="regFee" @submit="handleSubmit" />
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     this.regFee = Number(fee);
   },
   methods: {
-    async handleRegister() {
+    async handleSubmit() {
       try {
         const response = await shop.methods.registerUser().send({
           from: window.ethereum.selectedAddress,

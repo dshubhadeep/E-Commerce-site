@@ -1,7 +1,7 @@
 <template>
   <div class="mx-4 flex justify-center">
     <div class="w-full max-w-xs">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="handleSubmit">
         <div class="mb-6">
           <label
             class="block text-gray-700 text-sm font-bold mb-2"
@@ -19,7 +19,6 @@
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            @click="$emit('register')"
           >Register</button>
         </div>
       </form>
@@ -33,6 +32,11 @@ export default {
   name: "RegistrationForm",
   props: {
     regFee: Number
+  },
+  methods : {
+    handleSubmit(event) {
+      this.$emit("submit", event);
+    }
   }
 };
 </script>
