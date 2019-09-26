@@ -18,6 +18,7 @@ contract Shop {
         uint productId; // uid for product
         uint sellerId; // id of user who is selling product
         uint buyerId; // id of user who is buying product
+        uint price; // price of product
         bytes32 name; // human readable name for product
         bytes32 imageHash; // ipfs hash for product image
         uint dateAdded; // date when product was added to store
@@ -72,11 +73,12 @@ contract Shop {
     /**
      * @dev Allow user to add product to store
      * @param _name Name of product
+     * @param _price Price of product
      * @param _imageHash IPFS hash of prdouct image
      * @param _dateAdded Date the product was added to store
      */
 
-    function addProduct(bytes32 _name, bytes32 _imageHash, uint _dateAdded) public onlyRegisteredUsers {
+    function addProduct(bytes32 _name, uint _price, bytes32 _imageHash, uint _dateAdded) public onlyRegisteredUsers {
         productCount++;
         uint sellerId = registeredUsers[msg.sender].userId;
         registeredUsers[msg.sender].noOfItemsAdded++;
@@ -86,6 +88,7 @@ contract Shop {
             sellerId: sellerId,
             buyerId: 0,
             name: _name,
+            price: _price,
             imageHash: _imageHash,
             dateAdded: _dateAdded,
             dateSold: 0,
