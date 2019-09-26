@@ -74,7 +74,8 @@ contract Shop {
      * @dev Allow user to add product to store
      * @param _name Name of product
      * @param _price Price of product
-     * @param _imageHash IPFS hash of prdouct image
+     * @param _imageHash IPFS hash of product i,
+     mage
      * @param _dateAdded Date the product was added to store
      */
 
