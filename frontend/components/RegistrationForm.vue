@@ -16,10 +16,11 @@
           />
         </div>
         <div class="flex items-center justify-center">
-          <button
+          <input
+            type="submit"
+            value="Register"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-          >Register</button>
+          />
         </div>
       </form>
     </div>
@@ -33,7 +34,7 @@ export default {
   props: {
     regFee: Number
   },
-  methods : {
+  methods: {
     handleSubmit(event) {
       this.$emit("submit", event);
     }
