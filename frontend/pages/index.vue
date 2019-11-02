@@ -18,7 +18,8 @@ export default {
   },
   data() {
     return {
-      products: []
+      products: [],
+      account: "account"
     };
   },
   async mounted() {

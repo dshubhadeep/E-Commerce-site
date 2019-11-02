@@ -33,7 +33,6 @@ export default {
         });
 
         alert("Registered");
-        console.log("Response " + response);
       } catch (err) {
         alert(err.message);
       }
