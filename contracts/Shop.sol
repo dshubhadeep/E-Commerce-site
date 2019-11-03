@@ -16,8 +16,8 @@ contract Shop {
 
     struct Product {
         uint productId; // uid for product
-        uint sellerId; // id of user who is selling product
-        uint buyerId; // id of user who is buying product
+        address payable sellerAddress; // address of user who is selling product
+        address buyerAddress; // address of user who is buying product
         uint price; // price of product
         bytes32 name; // human readable name for product
         bytes32 imageHash; // ipfs hash for product image
@@ -28,8 +28,8 @@ contract Shop {
 
     struct User {
         uint userId; // uid for user
-        uint noOfItemsAdded; // track no. of products added by user
-        uint noOfItemsBought; // track no. of products bought by user
+        uint[] itemsAdded; // ids of added items
+        uint[] itemsBought; // ids of bought items
     }
 
     /****************
@@ -59,10 +59,13 @@ contract Shop {
 
         userCount++;
 
+        uint[] memory itemsAdded;
+        uint[] memory itemsBought;
+
         registeredUsers[msg.sender] = User({
             userId: userCount,
-            noOfItemsAdded: 0,
-            noOfItemsBought: 0
+            itemsAdded: itemsAdded,
+            itemsBought: itemsBought
         });
 
         owner.transfer(msg.value);
@@ -79,13 +82,12 @@ contract Shop {
      */
     function addProduct(bytes32 _name, uint _price, bytes32 _imageHash, uint _dateAdded) public onlyRegisteredUsers returns(bool added) {
         productCount++;
-        uint sellerId = registeredUsers[msg.sender].userId;
-        registeredUsers[msg.sender].noOfItemsAdded++;
+        registeredUsers[msg.sender].itemsAdded.push(productCount);
 
         productList[productCount] = Product({
             productId: productCount,
-            sellerId: sellerId,
-            buyerId: 0,
+            sellerAddress: msg.sender,
+            buyerAddress: address(0),
             name: _name,
             price: _price,
             imageHash: _imageHash,
@@ -99,6 +101,43 @@ contract Shop {
 
     function getUserCount() public view returns (uint count) {
         return userCount;
+    }
+
+    /**
+     * @dev Allow user to buy product from store
+     * @param _productId ID of product to be bought
+     * @param _dateSold Date the product was sold
+     */
+    function buyProduct(uint _productId, uint _dateSold) public payable onlyRegisteredUsers returns (bool bought) {
+        require(_productId > 0 && _productId <= productCount, "Invalid product id");
+        require(!productList[_productId].sold, "Product is already sold");
+        require(msg.sender != productList[_productId].sellerAddress, "Seller cannot buy item");
+        require(msg.value == productList[_productId].price, "Insufficient price");
+
+        address payable sellerAddress = productList[_productId].sellerAddress;
+
+        // Make changes to product list
+        productList[_productId].buyerAddress = msg.sender;
+        productList[_productId].sold = true;
+        productList[_productId].dateSold = _dateSold;
+
+        // add item to buyer structs
+        registeredUsers[msg.sender].itemsBought.push(_productId);
+
+        // Transfer value
+        sellerAddress.transfer(msg.value);
+
+        return true;
+    }
+
+    /**
+     * @dev Get user details
+     * @param _userAddress address of user
+     */
+    function getUser(address _userAddress) public view returns
+    (uint _userId,uint[] memory _itemsAdded,uint[] memory _itemsBought) {
+        User memory user = registeredUsers[_userAddress];
+        return (user.userId, user.itemsAdded, user.itemsBought);
     }
 
 }
