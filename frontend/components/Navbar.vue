@@ -88,6 +88,10 @@ export default {
   cursor: pointer;
 }
 
+.nuxt-link-active .menu-item {
+  color: #1a202c;
+}
+
 .menu-item:hover {
   color: rgb(162, 95, 75);
 }

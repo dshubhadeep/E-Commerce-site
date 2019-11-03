@@ -1,26 +1,15 @@
 <template>
   <div class="mx-4 flex justify-center">
     <div class="w-full max-w-xs">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="handleSubmit">
-        <div class="mb-6">
-          <label
-            class="block text-gray-700 text-sm font-bold mb-2"
-            for="regFee"
-          >Registration Fee (wei)</label>
-          <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="regFee"
-            type="text"
-            :value="regFee"
-            disabled
-          />
-        </div>
+      <form class="bg-white px-8 pt-6 pb-8 mb-4 border-2" @submit.prevent="handleSubmit">
+        <custom-input
+          label="Registration Fee (wei)"
+          name="regFee"
+          :placeholder="regFee.toString()"
+          disabled
+        />
         <div class="flex items-center justify-center">
-          <input
-            type="submit"
-            value="Register"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-          />
+          <input type="submit" value="Register" class="gold-button" />
         </div>
       </form>
     </div>
@@ -29,8 +18,11 @@
 
 
 <script>
+import CustomInput from "./CustomInput";
+
 export default {
   name: "RegistrationForm",
+  components: { CustomInput },
   props: {
     regFee: Number
   },
@@ -43,5 +35,33 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+.gold-button {
+  position: relative;
+  z-index: 50;
+  display: inline-block;
+  padding: 16px 20px;
+  margin-top: 12px;
+  justify-content: center;
+  border-radius: 0px;
+  background-color: #baa082;
+  box-shadow: none;
+  transition: background-color 400ms ease, opacity 400ms ease,
+    box-shadow 400ms ease;
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.gold-button:hover {
+  background-color: #dbbd9a;
+  opacity: 0.96;
+  color: #fff;
+  cursor: pointer;
+}
 </style>

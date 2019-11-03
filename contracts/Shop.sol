@@ -77,7 +77,6 @@ contract Shop {
      * @param _imageHash IPFS hash of product image
      * @param _dateAdded Date the product was added to store
      */
-
     function addProduct(bytes32 _name, uint _price, bytes32 _imageHash, uint _dateAdded) public onlyRegisteredUsers returns(bool added) {
         productCount++;
         uint sellerId = registeredUsers[msg.sender].userId;
