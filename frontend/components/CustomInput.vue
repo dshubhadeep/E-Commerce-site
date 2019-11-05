@@ -1,7 +1,14 @@
 <template>
   <div class="input-wrapper">
-    <label for>{{label}}</label>
-    <input :type="type" class="field" :name="name" :placeholder="placeholder" :disabled="disabled" />
+    <label :for="name">{{label}}</label>
+    <input
+      :type="type"
+      class="field"
+      :name="name"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :id="name"
+    />
   </div>
 </template>
 

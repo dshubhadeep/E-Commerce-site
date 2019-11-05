@@ -1,31 +1,12 @@
 <template>
   <div class="mx-4 flex justify-center">
-    <div class="w-full max-w-sm">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="handleSubmit">
-        <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="productName">Name</label>
-          <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="productName"
-            type="text"
-            placeholder="Product name"
-          />
-        </div>
-        <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="productPrice">Price (ether)</label>
-          <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="productPrice"
-            type="text"
-            placeholder="1000"
-          />
-        </div>
+    <div class="w-full max-w-md">
+      <form class="bg-white px-8 pt-6 pb-8 mb-4 border-2" @submit.prevent="handleSubmit">
+        <custom-input label="Name" name="productName" placeholder="Product Name" />
+        <custom-input label="Price (ether)" name="productPrice" placeholder="1.5" />
+        <uploader />
         <div class="flex items-center justify-center">
-          <input
-            type="submit"
-            value="Add product"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-          />
+          <input type="submit" value="Add product" class="gold-button" />
         </div>
       </form>
     </div>
@@ -34,10 +15,15 @@
 
 
 <script>
-// TODO : Add image field
+import CustomInput from "./CustomInput";
+import Uploader from "./Uploader";
 
 export default {
   name: "AddProductForm",
+  components: {
+    CustomInput,
+    Uploader
+  },
   methods: {
     handleSubmit(event) {
       this.$emit("submit", event);
@@ -47,5 +33,33 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+.gold-button {
+  position: relative;
+  z-index: 50;
+  display: inline-block;
+  padding: 16px 20px;
+  margin-top: 12px;
+  justify-content: center;
+  border-radius: 0px;
+  background-color: #baa082;
+  box-shadow: none;
+  transition: background-color 400ms ease, opacity 400ms ease,
+    box-shadow 400ms ease;
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.gold-button:hover {
+  background-color: #dbbd9a;
+  opacity: 0.96;
+  color: #fff;
+  cursor: pointer;
+}
 </style>

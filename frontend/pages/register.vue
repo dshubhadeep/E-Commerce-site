@@ -1,10 +1,6 @@
 <template>
   <div class="container">
-    <div class="text-center my-6 flex justify-center items-center">
-      <div class="w-20 bg-gray-300 m-4 opacity-75" style="height:2px;"></div>
-      <h2 class="text-3xl font-semibold text-gray-800">Register</h2>
-      <div class="w-20 bg-gray-300 m-4 opacity-75" style="height:2px;"></div>
-    </div>
+    <heading text="Register" />
     <registration-form :regFee="regFee" @submit="handleSubmit" />
   </div>
 </template>
@@ -12,9 +8,11 @@
 <script>
 import shop from "@/utils/shop";
 import RegistrationForm from "@/components/RegistrationForm";
+import Heading from "@/components/Heading";
 
 export default {
   components: {
+    Heading,
     RegistrationForm
   },
   data() {

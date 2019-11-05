@@ -16,6 +16,7 @@
     "assert": "^2.0.0",
     "ethereum-blockies": "^0.1.1",
     "ganache-cli": "^6.7.0",
+    "ipfs-http-client": "^39.0.2",
     "mocha": "^6.2.0",
     "nuxt": "^2.0.0",
     "web3": "^1.2.1"

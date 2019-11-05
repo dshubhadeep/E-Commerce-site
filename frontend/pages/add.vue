@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div class="text-center my-6">
-      <h2 class="text-3xl font-semibold text-gray-900">Add</h2>
-    </div>
+    <heading text="Add" />
     <add-product-form @submit="handleSubmit" />
   </div>
 </template>
@@ -10,10 +8,14 @@
 <script>
 import shop from "@/utils/shop";
 import web3 from "@/utils/web3";
+import ipfs from "@/utils/ipfs";
+
 import AddProductForm from "@/components/AddProductForm";
+import Heading from "@/components/Heading";
 
 export default {
   components: {
+    Heading,
     AddProductForm
   },
   methods: {
@@ -24,13 +26,23 @@ export default {
 
       Array.from(e.target.elements, element => {
         if (element.type === "text") obj[element.id] = element.value;
+        if (element.type === "file") obj[element.id] = element.files[0];
       });
 
       console.log(obj);
 
-      const name = web3.utils.fromAscii(obj["productName"]);
-      const hash = web3.utils.fromAscii("hash");
+      const name = obj["productName"];
       const weiPrice = web3.utils.toWei(obj["productPrice"], "ether");
+      let hash;
+
+      try {
+        console.log("UPLOADING IMAGE...");
+        const res = await ipfs.add(obj["productImage"]);
+        console.log("IPFS result hash", res[0].hash);
+        hash = res[0].hash;
+      } catch (err) {
+        console.log(err.message);
+      }
 
       try {
         await shop.methods.addProduct(name, weiPrice, hash, currentTime).send({

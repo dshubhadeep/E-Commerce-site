@@ -7,6 +7,7 @@
           <tr>
             <th>Name</th>
             <th>Price (Ether)</th>
+            <th>Hash</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -35,7 +36,7 @@ export default {
 <style>
 #products {
   border-collapse: collapse;
-  width: 50%;
+  width: 70%;
 }
 
 #products td,

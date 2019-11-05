@@ -1,7 +1,10 @@
 <template>
   <tr>
-    <td>{{cleanName(product.name)}}</td>
+    <td>{{product.name}}</td>
     <td>{{toEther(product.price)}}</td>
+    <td>
+      <a :href="`https://ipfs.infura.io/ipfs/${product.imageHash}`" target="_blank">View image</a>
+    </td>
     <td>
       <button>Buy</button>
     </td>
@@ -18,9 +21,7 @@ export default {
   computed: {
     cleanName() {
       return name => {
-        const s = web3.utils.toAscii(name);
-        const idx = s.indexOf(s[31]);
-        return s.slice(0, idx);
+        return name;
       };
     },
     toEther() {
@@ -31,7 +32,3 @@ export default {
   }
 };
 </script>
-
-
-<style>
-</style>

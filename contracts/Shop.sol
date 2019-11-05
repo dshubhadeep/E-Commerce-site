@@ -19,8 +19,8 @@ contract Shop {
         address payable sellerAddress; // address of user who is selling product
         address buyerAddress; // address of user who is buying product
         uint price; // price of product
-        bytes32 name; // human readable name for product
-        bytes32 imageHash; // ipfs hash for product image
+        string name; // human readable name for product
+        string imageHash; // ipfs hash for product image
         uint dateAdded; // date when product was added to store
         uint dateSold; // date when product was sold (default - 0)
         bool sold; // track if product was sold
@@ -80,7 +80,8 @@ contract Shop {
      * @param _imageHash IPFS hash of product image
      * @param _dateAdded Date the product was added to store
      */
-    function addProduct(bytes32 _name, uint _price, bytes32 _imageHash, uint _dateAdded) public onlyRegisteredUsers returns(bool added) {
+    function addProduct(string memory _name, uint _price, string memory _imageHash, uint _dateAdded)
+    public onlyRegisteredUsers returns(bool added) {
         productCount++;
         registeredUsers[msg.sender].itemsAdded.push(productCount);
 
