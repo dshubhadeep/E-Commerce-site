@@ -36,7 +36,7 @@ export default {
       let hash;
 
       try {
-        console.log("UPLOADING IMAGE...");
+        alert("UPLOADING IMAGE...");
         const res = await ipfs.add(obj["productImage"]);
         console.log("IPFS result hash", res[0].hash);
         hash = res[0].hash;
@@ -51,10 +51,11 @@ export default {
         });
 
         alert("Product added ");
+        this.$router.push("/");
       } catch (err) {
-        alert(err.message);
+        console.log(err.message);
+        alert("Something went wrong");
       }
-      this.$router.push("/");
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="text-center my-6">
-      <h2 class="text-3xl font-semibold text-gray-900">Products</h2>
+      <h2 class="text-3xl text-gray-900">Products</h2>
     </div>
     <product-list :products="products" />
   </div>

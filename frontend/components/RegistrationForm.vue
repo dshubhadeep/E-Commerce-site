@@ -1,6 +1,6 @@
 <template>
   <div class="mx-4 flex justify-center">
-    <div class="w-full max-w-xs">
+    <div class="w-full max-w-sm">
       <form class="bg-white px-8 pt-6 pb-8 mb-4 border-2" @submit.prevent="handleSubmit">
         <custom-input
           label="Registration Fee (wei)"
