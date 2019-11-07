@@ -2,14 +2,12 @@
   <div class="product-detail-wrapper">
     <div class="mx-4 my-12 flex justify-center">
       <div id="product-detail-grid" class="w-full max-w-4xl">
-        <div class="p-4 product-image">
-          <!-- <img
-            src="https://source.unsplash.com/collection/172974"
-            class="object-contain w-full rounded"
-          />-->
-        </div>
+        <div
+          class="product-image"
+          style="background-image: url('https://source.unsplash.com/collection/874140')"
+        ></div>
         <div class="product-details">
-          <h1 class="text-3xl text-gray-900 mb-2">{{product.name}}</h1>
+          <h1 class="text-3xl text-gray-900 mb-2 tracking-wide">{{product.name}}</h1>
           <h3 class="text-xl text-gray-700 mb-2">{{toEther(product.price)}} ETH</h3>
           <h4 :title="product.sellerAddress" class="text-xl text-gray-600 mb-6">
             Seller :
@@ -65,9 +63,10 @@ export default {
 
 .product-image {
   position: relative;
+  padding: 1rem;
   width: 460px;
   height: 460px;
-  background-image: url("https://source.unsplash.com/collection/172974");
+  background-image: url("/images/default.jpg");
   background-position: 50% 50%;
   background-size: cover;
 }

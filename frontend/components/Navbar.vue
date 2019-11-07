@@ -9,9 +9,9 @@
         <nuxt-link to="/register" class="menu-item-wrap">
           <div class="menu-item">Register</div>
         </nuxt-link>
-        <div class="menu-item-wrap">
+        <nuxt-link :to="`/account/${account}`" class="menu-item-wrap">
           <div class="menu-item" :title="account">{{formattedAcc}}</div>
-        </div>
+        </nuxt-link>
       </nav>
     </div>
   </div>

@@ -1,13 +1,16 @@
 <template>
   <div class="product-wrapper">
-    <div class="product-image-wrapper">
+    <div
+      class="product-image-wrapper"
+      style="background-image: url('https://source.unsplash.com/collection/874140')"
+    >
       <div class="product-overlay">
         <n-link :to="`/product/${product.productId}`" class="white-button">View product</n-link>
       </div>
-      <img
+      <!-- <img
         src="https://source.unsplash.com/collection/172974"
         class="object-cover h-64 w-full rounded shadow-md"
-      />
+      />-->
     </div>
 
     <div class="text-center my-4">
@@ -15,7 +18,7 @@
         <h2 class="product-name mr-2">{{product.name}}</h2>
         <p
           v-show="product.sold"
-          class="mt-2 bg-gray-400 text-gray-900 px-3 text-sm py-2 rounded-full tracking-wide"
+          class="mt-2 bg-gray-400 text-gray-900 px-2 text-sm py-1 rounded-full tracking-wide"
         >SOLD</p>
       </div>
 
@@ -46,6 +49,11 @@ export default {
 <style scoped>
 .product-image-wrapper {
   position: relative;
+  width: 100%;
+  height: 360px;
+  background-image: url("/images/default.jpg"); /* fallback */
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .product-image-wrapper:hover .product-overlay {
@@ -71,7 +79,7 @@ export default {
 }
 
 .white-button {
-  width: 86%;
+  width: 90%;
   z-index: 50;
   display: flex;
   padding: 18px 24px;
