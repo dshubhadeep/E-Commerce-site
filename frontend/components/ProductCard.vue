@@ -2,7 +2,7 @@
   <div class="product-wrapper">
     <div class="product-image-wrapper">
       <div class="product-overlay">
-        <a class="white-button">View product</a>
+        <n-link :to="`/product/${product.productId}`" class="white-button">View product</n-link>
       </div>
       <img
         src="https://source.unsplash.com/collection/172974"
@@ -11,7 +11,14 @@
     </div>
 
     <div class="text-center my-4">
-      <h2 class="product-name">{{product.name}}</h2>
+      <div class="flex justify-center items-center">
+        <h2 class="product-name mr-2">{{product.name}}</h2>
+        <p
+          v-show="product.sold"
+          class="mt-2 bg-gray-400 text-gray-900 px-3 text-sm py-2 rounded-full tracking-wide"
+        >SOLD</p>
+      </div>
+
       <h3 class="product-price">{{toEther(product.price)}} ETH</h3>
     </div>
   </div>
@@ -83,14 +90,12 @@ export default {
   text-align: center;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-decoration: none;
 }
 
 .white-button:hover {
   background-color: #fafafa;
   box-shadow: 0 3px 8px 0 rgba(29, 31, 46, 0.15);
   color: #161724;
-  cursor: pointer;
 }
 
 .product-name {

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <heading text="Add" />
     <add-product-form @submit="handleSubmit" />
   </div>

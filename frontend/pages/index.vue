@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="text-center my-6">
       <h2 class="text-3xl text-gray-900">Products</h2>
     </div>

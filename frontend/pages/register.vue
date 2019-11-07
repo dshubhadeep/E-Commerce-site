@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <heading text="Register" />
     <registration-form :regFee="regFee" @submit="handleSubmit" />
   </div>
