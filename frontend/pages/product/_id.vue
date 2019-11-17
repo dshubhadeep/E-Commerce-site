@@ -21,7 +21,7 @@ export default {
         name: "",
         price: "0",
         imageHash: "",
-        sellerAddress: "0x0000000000000000000000000000000000000000",
+        sellerAddress: "0x0",
         sold: false
       }
     };

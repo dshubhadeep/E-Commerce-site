@@ -2,15 +2,11 @@
   <div class="product-wrapper">
     <div
       class="product-image-wrapper"
-      style="background-image: url('https://source.unsplash.com/collection/874140')"
+      :style="{backgroundImage: `url(https://ipfs.infura.io/ipfs/${product.imageHash})`}"
     >
       <div class="product-overlay">
         <n-link :to="`/product/${product.productId}`" class="white-button">View product</n-link>
       </div>
-      <!-- <img
-        src="https://source.unsplash.com/collection/172974"
-        class="object-cover h-64 w-full rounded shadow-md"
-      />-->
     </div>
 
     <div class="text-center my-4">
@@ -30,8 +26,6 @@
 
 <script>
 import web3 from "@/utils/web3";
-
-// `https://ipfs.infura.io/ipfs/${product.imageHash}`
 
 export default {
   name: "ProductCard",

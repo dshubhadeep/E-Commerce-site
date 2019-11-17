@@ -4,7 +4,7 @@
       <div id="product-detail-grid" class="w-full max-w-4xl">
         <div
           class="product-image"
-          style="background-image: url('https://source.unsplash.com/collection/874140')"
+          :style="{backgroundImage: `url(https://ipfs.infura.io/ipfs/${product.imageHash})`}"
         ></div>
         <div class="product-details">
           <h1 class="text-3xl text-gray-900 mb-2 tracking-wide">{{product.name}}</h1>
