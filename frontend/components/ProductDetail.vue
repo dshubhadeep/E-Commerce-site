@@ -32,9 +32,7 @@ export default {
   props: ["product"],
   computed: {
     toEther() {
-      return price => {
-        return web3.utils.fromWei(price, "ether");
-      };
+      return price => web3.utils.fromWei(price, "ether");
     },
     formattedAcc() {
       return acc => {

@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     async handleSubmit(e) {
-      const obj = [];
+      const obj = {};
       const currentAcc = window.ethereum.selectedAddress;
       const currentTime = new Date().getTime();
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="product">
     <product-detail :product="product" @buyProduct="handleBuyProduct" />
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       id: this.$route.params.id,
       product: {
         name: "",
-        price: "0",
+        price: 0,
         imageHash: "",
         sellerAddress: "0x0",
         sold: false
